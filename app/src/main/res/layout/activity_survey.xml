@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -22,51 +23,50 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:weightSum="2"
+        android:weightSum="4"
         android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/pilih1"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_width="0dp"
-            android:backgroundTint="@android:color/holo_red_dark"
-            android:text="Sangat Tidak Puas"
-            tools:layout_editor_absoluteX="200dp"
-            tools:layout_editor_absoluteY="137dp" />
-
-        <Button
-            android:id="@+id/pilih3"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_width="0dp"
-            android:backgroundTint="@android:color/holo_blue_dark"
-            android:text="@string/pilih4" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:weightSum="2"
-        android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/pilih2"
-            android:layout_height="wrap_content"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:backgroundTint="@android:color/holo_orange_dark"
-            android:text="Tidak Puas" />
 
         <Button
             android:id="@+id/pilih4"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:layout_width="0dp"
-            android:backgroundTint="@android:color/holo_green_dark"
-            android:text="Sangat AMAT PUAS" />
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:backgroundTint="@android:color/transparent"
+            android:drawableTop="@mipmap/but_sap_icon"
+            android:text="Sangat AMAT PUAS"
+            android:textColor="@android:color/white" />
+
+        <Button
+            android:id="@+id/pilih3"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:backgroundTint="@android:color/transparent"
+            android:drawableTop="@mipmap/but_sp_icon"
+            android:text="@string/pilih4"
+            android:textColor="@android:color/white" />
+
+        <Button
+            android:id="@+id/pilih2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:backgroundTint="@android:color/transparent"
+            android:drawableTop="@mipmap/but_tp_icon"
+            android:text="Tidak Puas"
+            android:textColor="@android:color/white" />
+
+        <Button
+            android:id="@+id/pilih1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:backgroundTint="@android:color/transparent"
+            android:drawableTop="@mipmap/but_stp_icon"
+            android:text="Sangat Tidak Puas"
+            android:textColor="@android:color/white"
+            tools:layout_editor_absoluteX="200dp"
+            tools:layout_editor_absoluteY="137dp" />
 
     </LinearLayout>
 
@@ -76,8 +76,16 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="@string/pilihKeluar"
+        android:visibility="invisible"
         tools:layout_editor_absoluteX="86dp"
         tools:layout_editor_absoluteY="251dp" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center_vertical|center_horizontal|center"
+        app:srcCompat="@drawable/logo" />
 
 
 </LinearLayout>
