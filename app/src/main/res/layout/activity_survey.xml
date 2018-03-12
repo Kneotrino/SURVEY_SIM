@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/mainTheme"
+    android:orientation="vertical"
+    tools:context=".SurveyActivity">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Beritahu kami seberapa puas anda dengan pelayanan kami "
+        android:textAlignment="center"
+        android:textColor="#fff"
+        android:textSize="18sp"
+        android:textStyle="normal|bold" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:weightSum="2"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/pilih1"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:backgroundTint="@android:color/holo_red_dark"
+            android:text="Sangat Tidak Puas"
+            tools:layout_editor_absoluteX="200dp"
+            tools:layout_editor_absoluteY="137dp" />
+
+        <Button
+            android:id="@+id/pilih3"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:backgroundTint="@android:color/holo_blue_dark"
+            android:text="@string/pilih4" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:weightSum="2"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/pilih2"
+            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:backgroundTint="@android:color/holo_orange_dark"
+            android:text="Tidak Puas" />
+
+        <Button
+            android:id="@+id/pilih4"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:backgroundTint="@android:color/holo_green_dark"
+            android:text="Sangat AMAT PUAS" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/pilihKeluar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/pilihKeluar"
+        tools:layout_editor_absoluteX="86dp"
+        tools:layout_editor_absoluteY="251dp" />
+
+
+</LinearLayout>

@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">Survei Kepuasan Masyarakat Atas Pelayanan SIM</string>
+    <string name="hasil">Admin</string>
+    <string name="survey">Survey</string>
+    <string name="button">Keluar</string>
+    <string name="pilih1">Sangat Tidak Puas</string>
+    <string name="pilih2">Tidak Puas</string>
+    <string name="pilih3">Puas</string>
+    <string name="pilih4">Sangat Puas</string>
+    <string name="pilihKeluar">Kembali</string>
+    <string name="title_activity_login">Sign in</string>
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password (optional)</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email
+        completions."
+    </string>
+    <string name="admin">Export CSV</string>
+    <string name="makasih_title">Terimakasih atas partisipasi anda</string>
+    <string name="makasih">Partisipasi Anda membuat kami dapat berbenah untuk memberikan pelayanan yang terbaik</string>
+    <string name="p">P</string>
+    <string name="sp">SP</string>
+    <string name="tp">TP</string>
+    <string name="tanggal">Tanggal</string>
+</resources>

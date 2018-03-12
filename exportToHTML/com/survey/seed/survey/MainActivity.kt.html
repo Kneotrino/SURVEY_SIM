@@ -1,0 +1,131 @@
+<html>
+<head>
+<title>MainActivity.kt</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.ln { color: #999999; font-weight: normal; font-style: normal; }
+.s0 { color: rgb(0,0,128); font-weight: bold; }
+.s1 { color: rgb(0,0,0); }
+.s2 { color: rgb(0,128,0); font-weight: bold; }
+.s3 { color: rgb(0,0,255); }
+.s4 { color: rgb(128,128,128); font-style: italic; }
+</style>
+</head>
+<BODY BGCOLOR="#ffffff">
+<TABLE CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#c0c0c0" >
+<TR><TD><CENTER>
+<FONT FACE="Arial, Helvetica" COLOR="#000000">
+MainActivity.kt</FONT>
+</center></TD></TR></TABLE>
+<pre>
+<span class="s0">package </span><span class="s1">com.survey.seed.survey 
+ 
+import android.Manifest 
+import android.support.v7.app.AppCompatActivity 
+import android.os.Bundle 
+import android.widget.Button 
+import kotlinx.android.synthetic.* 
+import kotlinx.android.synthetic.main.activity_main.* 
+import android.R.id.button2 
+import android.R.id.button1 
+import android.widget.Toast 
+import android.content.Intent 
+import android.content.pm.PackageManager 
+import android.net.Uri 
+import android.os.Environment 
+import io.realm.Realm 
+import io.realm.RealmConfiguration 
+import io.realm.RealmResults 
+import java.io.FileWriter 
+import java.util.* 
+import android.os.Environment.getExternalStorageDirectory 
+import android.support.v4.app.ActivityCompat 
+import android.support.v4.content.ContextCompat 
+import java.io.File 
+import android.system.Os.mkdir 
+import java.nio.file.Files.exists 
+import java.sql.SQLOutput 
+ 
+ 
+</span><span class="s0">class </span><span class="s1">MainActivity : AppCompatActivity() { 
+ 
+    override </span><span class="s0">fun </span><span class="s1">onCreate(savedInstanceState: Bundle?) { 
+        </span><span class="s0">super</span><span class="s1">.onCreate(savedInstanceState) 
+        setContentView(R.layout.activity_main) 
+        </span><span class="s0">val </span><span class="s1">btnKeluar = findViewById(R.id.buttonKeluar) </span><span class="s0">as </span><span class="s1">Button 
+        </span><span class="s0">val </span><span class="s1">btnSurvey = findViewById(R.id.buttonSurvey) </span><span class="s0">as </span><span class="s1">Button 
+        </span><span class="s0">val </span><span class="s1">btnHasil = findViewById(R.id.buttonHasil) </span><span class="s0">as </span><span class="s1">Button 
+        </span><span class="s0">val </span><span class="s1">btnPrint = findViewById(R.id.buttonPrint) </span><span class="s0">as </span><span class="s1">Button 
+        Realm.init(</span><span class="s0">this</span><span class="s1">) 
+        println(filesDir.absolutePath) 
+        btnKeluar.setOnClickListener({ 
+            Toast.makeText(</span><span class="s0">this</span><span class="s1">, </span><span class="s2">&quot;Terimakasih&quot; </span><span class="s1">, Toast.LENGTH_LONG).show() 
+            finish(); 
+            System.exit(</span><span class="s3">0</span><span class="s1">); 
+        }) 
+        btnSurvey.setOnClickListener({ 
+            </span><span class="s0">val </span><span class="s1">i = Intent(</span><span class="s0">this</span><span class="s1">, SurveyActivity::</span><span class="s0">class</span><span class="s1">.java) 
+            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP) 
+            startActivity(i) 
+        }) 
+        btnHasil.setOnClickListener({ 
+            </span><span class="s0">val </span><span class="s1">i = Intent(</span><span class="s0">this</span><span class="s1">, TableActivity::</span><span class="s0">class</span><span class="s1">.java) 
+            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP) 
+            startActivity(i) 
+        }) 
+        btnPrint.setOnClickListener({ 
+            </span><span class="s0">val </span><span class="s1">config = RealmConfiguration.Builder() 
+                    .name(</span><span class="s2">&quot;feedback.realm&quot;</span><span class="s1">).build() 
+            </span><span class="s0">val </span><span class="s1">realm = Realm.getInstance(config) 
+            </span><span class="s0">val </span><span class="s1">findAll = realm.where(feedback::</span><span class="s0">class</span><span class="s1">.java).findAll() 
+            </span><span class="s0">val </span><span class="s1">CSV_HEADER = </span><span class="s2">&quot;id,tanggal,STP,TP,SP,SAP&quot;</span><span class="s1"> 
+            </span><span class="s0">var </span><span class="s1">fileWriter: FileWriter? = </span><span class="s0">null</span><span class="s1"> 
+ 
+            </span><span class="s0">try </span><span class="s1">{ 
+                </span><span class="s0">val </span><span class="s1">fileCSV = File(getExternalFilesDir(</span><span class="s0">null</span><span class="s1">), </span><span class="s2">&quot;feed.csv&quot;</span><span class="s1">) 
+                println(</span><span class="s2">&quot;fileCSV = </span><span class="s0">${</span><span class="s1">fileCSV</span><span class="s0">}</span><span class="s2">&quot;</span><span class="s1">) 
+                fileWriter = FileWriter(fileCSV) 
+                fileWriter.append(CSV_HEADER) 
+                fileWriter.append(</span><span class="s2">'</span><span class="s1">\n</span><span class="s2">'</span><span class="s1">) 
+ 
+                </span><span class="s0">for </span><span class="s1">(customer </span><span class="s0">in </span><span class="s1">findAll) { 
+                    fileWriter.append(customer.id.toString()) 
+                    fileWriter.append(</span><span class="s2">','</span><span class="s1">) 
+                    fileWriter.append(customer.tanggalString()) 
+                    fileWriter.append(</span><span class="s2">','</span><span class="s1">) 
+                    fileWriter.append(customer.sangatTidakPuas.toString()) 
+                    fileWriter.append(</span><span class="s2">','</span><span class="s1">) 
+                    fileWriter.append(customer.tidakPuas.toString()) 
+                    fileWriter.append(</span><span class="s2">','</span><span class="s1">) 
+                    fileWriter.append(customer.puas.toString()) 
+                    fileWriter.append(</span><span class="s2">','</span><span class="s1">) 
+                    fileWriter.append(customer.sangatPuas.toString()) 
+                    fileWriter.append(</span><span class="s2">'</span><span class="s1">\n</span><span class="s2">'</span><span class="s1">) 
+                } 
+ 
+                println(</span><span class="s2">&quot;Write CSV successfully!&quot;</span><span class="s1">) 
+                Toast.makeText(</span><span class="s0">this</span><span class="s1">,</span><span class="s2">&quot;</span><span class="s0">${</span><span class="s1">findAll.size</span><span class="s0">}</span><span class="s2"> data tersimpan CSV di : {</span><span class="s0">${</span><span class="s1">fileCSV</span><span class="s0">}</span><span class="s2">}&quot;</span><span class="s1">,Toast.LENGTH_LONG).show() 
+ 
+            } catch (e: Exception) { 
+                println(</span><span class="s2">&quot;Writing CSV error!&quot;</span><span class="s1">) 
+                e.printStackTrace() 
+            } finally { 
+                </span><span class="s0">try </span><span class="s1">{ 
+                    fileWriter!!.flush() 
+                    fileWriter.close() 
+                } catch (e: Exception) { 
+                    println(</span><span class="s2">&quot;Flushing/closing error!&quot;</span><span class="s1">) 
+                    e.printStackTrace() 
+                } 
+            } 
+            </span><span class="s4">//endOfline</span><span class="s1"> 
+ 
+        }) 
+ 
+    } 
+ 
+} 
+ 
+</span></pre>
+</body>
+</html>
