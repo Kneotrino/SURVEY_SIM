@@ -45,9 +45,9 @@
                                   <option name="values">
                                     <map>
                                       <entry key="backgroundLayerName" value="ic_launcher_background" />
-                                      <entry key="foregroundImage" value="D:\DATA\thanks.png" />
-                                      <entry key="foregroundLayerName" value="ic_launcher_foreground" />
-                                      <entry key="outputName" value="makasih" />
+                                      <entry key="foregroundImage" value="D:\DATA\polantas.png" />
+                                      <entry key="foregroundLayerName" value="app_icon" />
+                                      <entry key="outputName" value="icon" />
                                     </map>
                                   </option>
                                 </PersistentState>
